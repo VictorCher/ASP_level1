@@ -1,22 +1,33 @@
-﻿@model IEnumerable<WebStore.Models.EmployeeView>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" charset="utf-8" />
-    <title>Index</title>
-</head>
-<body>
-    <table>
+﻿@model IEnumerable<EmployeeView>
+@{ 
+    ViewData["Title"] = "Home";
+}
+<div class="container">
+    <table class="table table-bordered">
         @foreach (var item in Model)
         {
-        <tr>
-            <td>@item.FirstName</td>
-            <td>@item.SurName</td>
-            <td>@item.Patronymic</td>
-            <td>@item.Age</td>
-            <td>@Html.ActionLink("Детали", "Details", new { id = item.Id })</td>
-        </tr>
+            <tr>
+                <td>@item.FirstName</td>
+                <td>@item.SurName</td>
+                <td>@item.Patronymic</td>
+                <td>@item.Age</td>
+                <td>@Html.ActionLink("Детали", "Details", new { id = item.Id })</td>
+            </tr>
         }
     </table>
-</body>
-</html>
+</div>
+@await Html.PartialAsync("Partial/_Slider")
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                @await Html.PartialAsync("Partial/_LeftSideBar")
+            </div>
+            <div class="col-sm-9 padding-right">
+                @await Html.PartialAsync("Partial/_FeaturedItems")
+                @await Html.PartialAsync("Partial/_CategoryTab")
+                @await Html.PartialAsync("Partial/_RecommendedItems")
+            </div>
+        </div>
+    </div>
+</section>

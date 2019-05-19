@@ -1,20 +1,14 @@
-﻿@model WebStore.Models.EmployeeView
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" charset="utf-8" />
-    <title>Index</title>
-</head>
-<body>
-    @Html.ActionLink("Вернуться к списку", "Index", null)
-    <table>
-        <tr>
-            <td>@Model.Id</td>
-            <td>@Model.FirstName</td>
-            <td>@Model.SurName</td>
-            <td>@Model.Patronymic</td>
-            <td>@Model.Age</td>
-        </tr>
-    </table>
-</body>
-</html>
+﻿@{
+    ViewData["Title"] = "Details";
+}
+
+@Html.ActionLink("Вернуться к списку", "Index", null)
+<table>
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.FirstName</td>
+        <td>@Model.SurName</td>
+        <td>@Model.Patronymic</td>
+        <td>@Model.Age</td>
+    </tr>
+</table>

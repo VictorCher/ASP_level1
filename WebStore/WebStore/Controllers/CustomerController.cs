@@ -7,7 +7,7 @@ using WebStore.Models;
 
 namespace WebStore.Controllers
 {
-    public class HomeController : Controller
+    public class CustomerController : Controller
     {
         private readonly List<EmployeeView> _employees = new List<EmployeeView>
         {
@@ -38,11 +38,6 @@ namespace WebStore.Controllers
         public IActionResult Details(int id)
         {
             return View(_employees.Find(x => x.Id == id));
-        }
-
-        public IActionResult Login()
-        {
-            return View();
         }
     }
 }
