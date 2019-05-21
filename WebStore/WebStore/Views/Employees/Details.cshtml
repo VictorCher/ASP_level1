@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Подробнее";
+}
+<div class="container">
+    <hr />
+    <table class="table table-bordered">
+        <tr>
+            <td>@Model.Id</td>
+            <td>@Model.FirstName</td>
+            <td>@Model.SurName</td>
+            <td>@Model.Patronymic</td>
+            <td>@Model.Age</td>
+            <td>@Model.Position</td>
+        </tr>
+    </table>
+    <a asp-action="Index"> Назад к списку </a>
+</div>
