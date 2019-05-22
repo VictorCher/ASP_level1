@@ -32,12 +32,47 @@ namespace WebStore.Controllers
         public IActionResult Index()
         {
             //return Content("Hello from controller");
-            return View(_employees);
+            return View();
         }
 
-        public IActionResult Details(int id)
+        public IActionResult Blog()
         {
-            return View(_employees.Find(x => x.Id == id));
+            return View();
+        }
+
+        public IActionResult BlogSingle()
+        {
+            return View();
+        }
+
+        public IActionResult PageNotFound()
+        {
+            return View();
+        }
+
+        public IActionResult Cart()
+        {
+            return View();
+        }
+
+        public IActionResult Checkout()
+        {
+            return View();
+        }
+
+        public IActionResult ContactUs()
+        {
+            return View();
+        }
+
+        public IActionResult Shop()
+        {
+            return View();
+        }
+
+        public IActionResult ProductDetails()
+        {
+            return View();
         }
 
         public IActionResult Login()
