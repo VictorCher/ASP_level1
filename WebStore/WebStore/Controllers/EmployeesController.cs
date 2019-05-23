@@ -65,23 +65,33 @@ namespace WebStore.Controllers
         [Route("edit/{id?}")]
         public IActionResult Edit(EmployeeView model)
         {
-            if (model.Id > 0)
+            if (model.Age < 18 && model.Age > 75)
             {
-                var dbItem = _employeesData.GetById(model.Id);
-                if (ReferenceEquals(dbItem, null))
-                    return NotFound(); // возвращаем результат 404 Not Found
-                dbItem.FirstName = model.FirstName;
-                dbItem.SurName = model.SurName;
-                dbItem.Age = model.Age;
-                dbItem.Patronymic = model.Patronymic;
-                dbItem.Position = model.Position;
+                ModelState.AddModelError("Age", "Ошибка возраста!");
             }
-            else
+            // Проверяем модель на валидность
+            if (ModelState.IsValid)
             {
-                _employeesData.AddNew(model);
+                if (model.Id > 0)
+                {
+                    var dbItem = _employeesData.GetById(model.Id);
+                    if (ReferenceEquals(dbItem, null))
+                        return NotFound(); // возвращаем результат 404 Not Found
+                    dbItem.FirstName = model.FirstName;
+                    dbItem.SurName = model.SurName;
+                    dbItem.Age = model.Age;
+                    dbItem.Patronymic = model.Patronymic;
+                    dbItem.Position = dbItem.Position;
+                }
+                else
+                {
+                    _employeesData.AddNew(model);
+                }
+                _employeesData.Commit();
+                return RedirectToAction(nameof(Index));
             }
-            _employeesData.Commit();
-            return RedirectToAction(nameof(Index));
+            // Если не валидна, возвращаем ее на представление
+            return View(model);
         }
         /// <summary>
         /// Удаление сотрудника
