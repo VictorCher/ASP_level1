@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using WebStore.Infrastructure.Interfaces;
+using WebStore.Infrastructure.Implementations;
 
 namespace WebStore
 {
@@ -31,6 +33,8 @@ namespace WebStore
         {
             //Добавляем сервисы, необходимые для mvc
             services.AddMvc();
+            // Добавляем разрешение зависимости
+            services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,12 +57,6 @@ namespace WebStore
                 name: "default",
                 template: "{controller=Home}/{action=Index}/{id?}");
             });
-            /*
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync(hello);
-            });
-            */
         }
     }
 }
