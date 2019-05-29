@@ -26,7 +26,11 @@ collapse">
                             @foreach (var childSection in
                            parentSection.ChildSections)
                             {
-                                <li><a href="#"> @childSection.Name </a></li>
+                                <li>
+                                    < a asp-controller = "Catalog"
+                                    asp-action = "Shop" asp-route-sectionId = "@childSection.Id" > @childSection.Name
+                                    </ a >
+                                </li>
                             }
                         </ul>
                     </div>
@@ -38,7 +42,9 @@ collapse">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="panel-title">
-                        <a href="#">@parentSection.Name</a>
+                        <a asp-controller = "Catalog"
+                        asp-action = "Shop"
+                        asp-route-sectionId = "@parentSection.Id" > @parentSection.Name </a >
                     </h4>
                 </div>
             </div>
