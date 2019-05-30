@@ -15,7 +15,7 @@
                                 <i class="fa
 fa-plus"></i>
                             </span>
-                            @parentSection . Name
+                            @parentSection.Name
                         </a>
                     </h4>
                 </div>
@@ -27,9 +27,9 @@ collapse">
                            parentSection.ChildSections)
                             {
                                 <li>
-                                    < a asp-controller = "Catalog"
-                                    asp-action = "Shop" asp-route-sectionId = "@childSection.Id" > @childSection.Name
-                                    </ a >
+                                    <a asp-controller = "Catalog"
+                                    asp-action = "Shop" asp-route-sectionId = "@childSection.Id"> @childSection.Name
+                                    </a>
                                 </li>
                             }
                         </ul>
