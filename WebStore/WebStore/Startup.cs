@@ -9,6 +9,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Infrastructure.Implementations;
+using WebStore.Infrastructure.Implementations.Sql;
+using WebStore.DAL.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebStore
 {
@@ -35,7 +38,10 @@ namespace WebStore
             services.AddMvc();
             // Добавляем разрешение зависимости
             services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
-            services.AddSingleton<IProductData, InMemoryProductData>();
+            /*services.AddSingleton<IProductData, InMemoryProductData>();
+            services.AddDbContext<WebStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));*/
+            services.AddScoped<IProductData, SqlProductData>();
+            services.AddDbContext<WebStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
