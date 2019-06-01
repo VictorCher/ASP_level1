@@ -37,7 +37,9 @@ namespace WebStore
             //Добавляем сервисы, необходимые для mvc
             services.AddMvc();
             // Добавляем разрешение зависимости
-            services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            //services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            services.AddScoped<IEmployeesData, SqlEmployeesData>();
+            services.AddDbContext<EmployeesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             /*services.AddSingleton<IProductData, InMemoryProductData>();
             services.AddDbContext<WebStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));*/
             services.AddScoped<IProductData, SqlProductData>();
