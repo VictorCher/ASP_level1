@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebStore.ViewComponents;
-using WebStore.Domain.Entities.Filters;
+using WebStore.DomainNew.Entities.Filters;
 using WebStore.Infrastructure.Interfaces;
 using WebStore.Models;
 using WebStore.Infrastructure.Implementations;

@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using WebStore.DAL.Context;
-using WebStore.Domain.Entities;
+using WebStore.DomainNew.Entities;
 namespace WebStore.Data
 {
     public static class DbInitializer
@@ -22,9 +22,9 @@ namespace WebStore.Data
                 {
                     context.Sections.Add(section);
                 }
-                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Sections] ON");
+                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Sections] ON");
                 context.SaveChanges();
-                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Sections] OFF");
+                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Sections] OFF");
                 trans.Commit();
             }
             var brands = new List<Brand>();
@@ -34,9 +34,9 @@ namespace WebStore.Data
                 {
                     context.Brands.Add(brand);
                 }
-                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Brands] ON");
+                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Brands] ON");
                 context.SaveChanges();
-                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[Brands] OFF");
+                context.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[Brands] OFF");
                 trans.Commit();
             }
             var products = new List<Product>();

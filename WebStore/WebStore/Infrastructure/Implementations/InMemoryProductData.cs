@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebStore.Models;
 using WebStore.Infrastructure.Interfaces;
-using WebStore.Domain.Entities;
-using WebStore.Domain.Entities.Filters;
+using WebStore.DomainNew.Entities;
+using WebStore.DomainNew.Entities.Filters;
 
 namespace WebStore.Infrastructure.Implementations
 {

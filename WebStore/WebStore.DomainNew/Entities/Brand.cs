@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using WebStore.Domain.Entities.Base.Interfaces;
-using WebStore.Domain.Entities.Base;
+using WebStore.DomainNew.Entities.Base.Interfaces;
+using WebStore.DomainNew.Entities.Base;
 
-namespace WebStore.Domain.Entities
+namespace WebStore.DomainNew.Entities
 {
     /// <inheritdoc cref="NamedEntity" />
     /// <summary>

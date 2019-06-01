@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using WebStore.DAL.Context;
-using WebStore.Domain.Entities;
-using WebStore.Domain.Entities.Filters;
+using WebStore.DomainNew.Entities;
+using WebStore.DomainNew.Entities.Filters;
 using WebStore.Infrastructure.Interfaces;
 namespace WebStore.Infrastructure.Implementations.Sql
 {
