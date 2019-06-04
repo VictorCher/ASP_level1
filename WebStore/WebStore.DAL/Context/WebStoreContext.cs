@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebStore.DomainNew.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace WebStore.DAL.Context
 {
-    public class WebStoreContext : DbContext
+    public class WebStoreContext : IdentityDbContext<User>
     {
         public WebStoreContext(DbContextOptions options) : base(options){ }
         public DbSet<Product> Products { get; set; }
