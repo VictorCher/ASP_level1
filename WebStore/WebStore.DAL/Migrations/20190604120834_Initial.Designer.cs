@@ -10,7 +10,7 @@ using WebStore.DAL.Context;
 namespace WebStore.DAL.Migrations
 {
     [DbContext(typeof(WebStoreContext))]
-    [Migration("20190601125524_Initial")]
+    [Migration("20190604120834_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace WebStore.DAL.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebStore.Domain.Entities.Brand", b =>
+            modelBuilder.Entity("WebStore.DomainNew.Entities.Brand", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,28 @@ namespace WebStore.DAL.Migrations
                     b.ToTable("Brands");
                 });
 
-            modelBuilder.Entity("WebStore.Domain.Entities.Product", b =>
+            modelBuilder.Entity("WebStore.DomainNew.Entities.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("Age");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("Patronymic");
+
+                    b.Property<string>("Position");
+
+                    b.Property<string>("SurName");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("WebStore.DomainNew.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +84,7 @@ namespace WebStore.DAL.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("WebStore.Domain.Entities.Section", b =>
+            modelBuilder.Entity("WebStore.DomainNew.Entities.Section", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -82,21 +103,21 @@ namespace WebStore.DAL.Migrations
                     b.ToTable("Sections");
                 });
 
-            modelBuilder.Entity("WebStore.Domain.Entities.Product", b =>
+            modelBuilder.Entity("WebStore.DomainNew.Entities.Product", b =>
                 {
-                    b.HasOne("WebStore.Domain.Entities.Brand", "Brand")
+                    b.HasOne("WebStore.DomainNew.Entities.Brand", "Brand")
                         .WithMany("Products")
                         .HasForeignKey("BrandId");
 
-                    b.HasOne("WebStore.Domain.Entities.Section", "Section")
+                    b.HasOne("WebStore.DomainNew.Entities.Section", "Section")
                         .WithMany("Products")
                         .HasForeignKey("SectionId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("WebStore.Domain.Entities.Section", b =>
+            modelBuilder.Entity("WebStore.DomainNew.Entities.Section", b =>
                 {
-                    b.HasOne("WebStore.Domain.Entities.Section", "ParentSection")
+                    b.HasOne("WebStore.DomainNew.Entities.Section", "ParentSection")
                         .WithMany()
                         .HasForeignKey("ParentId");
                 });
