@@ -10,7 +10,7 @@ using WebStore.DAL.Context;
 namespace WebStore.DAL.Migrations
 {
     [DbContext(typeof(WebStoreContext))]
-    [Migration("20190604140721_Identity")]
+    [Migration("20190605180715_Identity")]
     partial class Identity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

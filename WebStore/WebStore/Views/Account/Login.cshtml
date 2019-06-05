@@ -12,11 +12,11 @@
                     <!--login form-->
                     <h2>Вход в свой аккаунт</h2>
                     <form asp-action="Login" asp-antiforgery="true">
-                        <input type="text" placeholder="Name"/>
-                        <input type="email" placeholder="Email Address"/>
+                        <input asp-for="UserName" placeholder="@nameof(Model.UserName)" />
+                        <input asp-for="Password" placeholder="@nameof(Model.Password)" />
                         <span>
                             <input type="checkbox" class="checkbox">
-                            Уже зарегистрирован
+                            Запомнить на сайте
                         </span>
                         <button type="submit" class="btn btn-default">Login</button>
                     </form>

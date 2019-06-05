@@ -15,7 +15,7 @@ namespace WebStore.Models.Account
         [Required, DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Required, DataType(DataType.EmailAddress)]
+        //[Required, DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
         [Display(Name = "Запомнить на сайте")]
