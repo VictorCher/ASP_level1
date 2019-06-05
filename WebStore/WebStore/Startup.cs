@@ -7,6 +7,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
+using WebStore.Infrastructure.Interfaces;
+using WebStore.Infrastructure.Implementations;
+using WebStore.Infrastructure.Implementations.Sql;
+using WebStore.DAL.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebStore
 {
@@ -31,6 +36,14 @@ namespace WebStore
         {
             //Добавляем сервисы, необходимые для mvc
             services.AddMvc();
+            // Добавляем разрешение зависимости
+            //services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            //services.AddScoped<IEmployeesEntity, SqlEmployeesData>();
+            //services.AddDbContext<EmployeesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            /*services.AddSingleton<IProductData, InMemoryProductData>();
+            services.AddDbContext<WebStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));*/
+            services.AddScoped<IProductData, SqlProductData>();
+            services.AddDbContext<WebStoreContext>(options=> options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,12 +66,6 @@ namespace WebStore
                 name: "default",
                 template: "{controller=Home}/{action=Index}/{id?}");
             });
-            /*
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync(hello);
-            });
-            */
         }
     }
 }
