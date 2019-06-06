@@ -40,7 +40,7 @@ namespace WebStore
             //Добавляем сервисы, необходимые для mvc
             services.AddMvc();
             // Добавляем разрешение зависимости
-            //services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
+            services.AddSingleton<IEmployeesData, InMemoryEmployeesData>();
             //services.AddScoped<IEmployeesEntity, SqlEmployeesData>();
             //services.AddDbContext<EmployeesContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             /*services.AddSingleton<IProductData, InMemoryProductData>();
@@ -71,6 +71,9 @@ namespace WebStore
         options.AccessDeniedPath = "/Account/AccessDenied"; // If the AccessDeniedPath is not set here, ASP.NET Core will default to/ Account / AccessDenied
         options.SlidingExpiration = true;
             });
+            //Настройки для корзины
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ICartService, CookieCartService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

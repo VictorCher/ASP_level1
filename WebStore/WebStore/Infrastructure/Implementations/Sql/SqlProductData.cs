@@ -25,14 +25,17 @@ namespace WebStore.Infrastructure.Implementations.Sql
         }
         public IEnumerable<Product>GetProducts(ProductFilter filter)
         {
-            var query = _context.Products.AsQueryable();
+            var query =_context.Products.Include("Brand").Include("Section").AsQueryable();
             if (filter.BrandId.HasValue)
                 query = query.Where(c => c.BrandId.HasValue &&
             c.BrandId.Value.Equals(filter.BrandId.Value));
             if (filter.SectionId.HasValue)
-                query = query.Where(c =>
-            c.SectionId.Equals(filter.SectionId.Value));
+                query = query.Where(c =>c.SectionId.Equals(filter.SectionId.Value));
             return query.ToList();
+        }
+        public Product GetProductById(int id)
+        {
+            return _context.Products.Include("Brand").Include("Section").FirstOrDefault(p =>p.Id.Equals(id));
         }
 
         public IEnumerable<Employee> GetAll()
