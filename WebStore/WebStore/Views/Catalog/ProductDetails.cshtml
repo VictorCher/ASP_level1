@@ -1,5 +1,6 @@
 ﻿@using WebStore.Models
 @model ProductViewModel
+
 @{
     ViewData["Title"] = "Товар:" + Model.Name;
 }
@@ -278,13 +279,13 @@
         </div>
     </div>
 </section>
-
-@model IEnumerable<WebStore.Models.ProductViewModel>
-<div class="features_items">
-    <!--features_items-->
-    <h2 class="title text-center"> Товары </h2>
-    @foreach (var item in Model)
-    {
+@*
+    @model IEnumerable<WebStore.Models.ProductViewModel>
+    <div class="features_items">
+        <!--features_items-->
+        <h2 class="title text-center"> Товары </h2>
+        @foreach (var item in Model)
+        {
         <div class="col-sm-4">
             <div class="product-image-wrapper">
                 <div class="single-products">
@@ -296,7 +297,7 @@
                         </a>
                         <a asp-controller="Cart" asp-action="AddToCart"
                            asp-route-id="@item.Id" asp-route-returnUrl="@Context.Request.Path" class="btn
-btn-default add-to-cart">
+    btn-default add-to-cart">
                             <i class="fa fa-shopping-cart"></i> Добавить в
                             корзину
                         </a>
@@ -307,18 +308,19 @@ btn-default add-to-cart">
                         <li>
                             <a href="#">
                                 <i class="fa
-fa-plus-square"></i> Добавить в список желаний
+    fa-plus-square"></i> Добавить в список желаний
                             </a>
                         </li>
                         <li>
                             <a href="#">
                                 <i class="fa
-fa-plus-square"></i> Добавить к сравнению
+    fa-plus-square"></i> Добавить к сравнению
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-    }
-</div> <!--features_items-->
+        }
+    </div> <!--features_items-->
+*@

@@ -421,5 +421,10 @@ namespace WebStore.Infrastructure.Implementations
         {
             return _sections;
         }
+
+        public Product GetProductById(int id)
+        {
+            return _products.FirstOrDefault(e => e.Id.Equals(id));
+        }
     }
 }

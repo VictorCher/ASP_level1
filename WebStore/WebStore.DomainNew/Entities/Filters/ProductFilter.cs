@@ -17,5 +17,6 @@ namespace WebStore.DomainNew.Entities.Filters
         /// Бренд товара
         /// </summary>
         public int? BrandId { get; set; }
+        public List<int> Ids { get; set; }
     }
 }
